@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Trip - Sri Lanka</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #195b4e 0%, #033a26 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .header h1 {
+      font-size: 36px;
+      background: linear-gradient(135deg, #12534d, #2c7a73);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: #666;
+      font-size: 18px;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e1e5e9;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #12534d;
+      box-shadow: 0 0 0 3px rgba(18, 83, 77, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .btn {
+      background: linear-gradient(135deg, #12534d, #2c7a73);
+      color: white;
+      padding: 18px 50px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(18, 83, 77, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(18, 83, 77, 0.4);
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #12534d;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: rgba(18, 83, 77, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      background: rgba(18, 83, 77, 0.2);
+      transform: translateX(-5px);
+    }
+    
+    .section-title {
+      font-size: 20px;
+      color: #12534d;
+      margin: 30px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e1e5e9;
+      font-weight: 600;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin: 10px;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Plan Your Sri Lanka Adventure</h1>
+      <p>Create your perfect journey to the Pearl of the Indian Ocean</p>
+    </div>
+    
+    <form id="planForm">
+      <div class="section-title">Destination & Dates</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Destination</label>
+          <select name="destination" id="destinationSelect" onchange="toggleCustomLocation()" required>
+            <option value="">Choose destination</option>
+            <option value="colombo">Colombo</option>
+            <option value="kandy">Kandy</option>
+            <option value="galle">Galle</option>
+            <option value="ella">Ella</option>
+            <option value="sigiriya">Sigiriya</option>
+            <option value="nuwara-eliya">Nuwara Eliya</option>
+            <option value="anuradhapura">Anuradhapura</option>
+            <option value="polonnaruwa">Polonnaruwa</option>
+            <option value="bentota">Bentota</option>
+            <option value="mirissa">Mirissa</option>
+            <option value="arugam-bay">Arugam Bay</option>
+            <option value="trincomalee">Trincomalee</option>
+            <option value="custom">Add Custom Location</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label>Check-in Date</label>
+          <input type="date" name="checkin" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Check-out Date</label>
+          <input type="date" name="checkout" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Travelers</label>
+          <select name="travelers" required>
+            <option value="">Number of people</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 People</option>
+            <option value="3-4">3-4 People</option>
+            <option value="5+">5+ People</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group" id="customLocationDiv" style="display: none;">
+        <label>Enter Your Location</label>
+        <input type="text" name="customLocation" id="customLocationInput" placeholder="Enter city, town, or specific location">
+      </div>
+      
+      <div class="section-title">Personal Information</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Guide Contact</label>
+        <select name="guide" required>
+          <option value="">Choose guide service</option>
+          <option value="local-guide">Local Guide (+94 77 123 4567)</option>
+          <option value="tour-guide">Professional Tour Guide (+94 71 987 6543)</option>
+          <option value="adventure-guide">Adventure Guide (+94 76 555 1234)</option>
+          <option value="cultural-guide">Cultural Guide (+94 75 444 5678)</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Transport Contact</label>
+        <select name="transport" required>
+          <option value="">Choose transport</option>
+          <option value="taxi">Taxi Service (+94 11 222 3333)</option>
+          <option value="tuk-tuk">Tuk-Tuk Rental (+94 77 888 9999)</option>
+          <option value="car-rental">Car Rental (+94 11 555 7777)</option>
+          <option value="bus">Bus Transport (+94 11 333 4444)</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Hotel Connection</label>
+        <select name="hotel" required>
+          <option value="">Choose hotel type</option>
+          <option value="luxury">Luxury Resort (Contact: +94 11 777 8888)</option>
+          <option value="boutique">Boutique Hotel (Contact: +94 77 666 5555)</option>
+          <option value="budget">Budget Hotel (Contact: +94 71 444 3333)</option>
+          <option value="eco">Eco Resort (Contact: +94 76 222 1111)</option>
+          <option value="heritage">Heritage Hotel (Contact: +94 75 999 0000)</option>
+        </select>
+      </div>
+      
+      <div class="btn-container">
+        <button type="submit" class="btn">Create My Trip Plan</button>
+        <br>
+        <a href="srl.html" class="back-link">← Back to Home</a>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    function toggleCustomLocation() {
+      const select = document.getElementById('destinationSelect');
+      const customDiv = document.getElementById('customLocationDiv');
+      const customInput = document.getElementById('customLocationInput');
+      
+      if (select.value === 'custom') {
+        customDiv.style.display = 'block';
+        customInput.required = true;
+      } else {
+        customDiv.style.display = 'none';
+        customInput.required = false;
+        customInput.value = '';
+      }
+    }
+    
+    document.getElementById('planForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const destination = document.getElementById('destinationSelect').value;
+      const customLocation = document.getElementById('customLocationInput').value;
+      
+      if (destination === 'custom' && !customLocation.trim()) {
+        alert('Please enter your custom location.');
+        return;
+      }
+      
+      alert('Thank you! We will contact you soon with your trip plan.');
+      window.location.href = 'srl.html';
+    });
+  </script>
+</body>
+</html>
