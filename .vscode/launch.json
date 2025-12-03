@@ -7,8 +7,8 @@
         {
             "type": "msedge",
             "request": "launch",
-            "name": "Open srl.html",
-            "file": "c:\\Users\\User\\Documents\\MyProject\\Sri_lanka\\Sri_lanka\\srl.html"
+            "name": "Open index.html",
+            "file": "c:\\Users\\User\\Documents\\MyProject\\Sri_lanka\\Sri_lanka\\index.html"
         }
     ]
 }
